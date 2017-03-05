@@ -1,4 +1,3 @@
-@@ -0,0 +1,275 @@
 firewall {
     all-ping enable
     broadcast-ping disable
