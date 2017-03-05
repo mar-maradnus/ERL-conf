@@ -1,0 +1,44 @@
+zone-policy {
+    zone LAN {
+        default-action drop
+        from local {
+            firewall {
+                name allow-all
+            }
+        }
+        from WAN {
+            firewall {
+                name allow-est-drop-inv
+            }
+        }
+        interface eth2
+    }
+    zone local {
+        default-action drop
+        from LAN {
+            firewall {
+                name lan-local
+            }
+        }
+        from WAN {
+            firewall {
+                name WAN-local
+            }
+        }
+        local-zone
+    }
+    zone WAN {
+        default-action drop
+        from LAN {
+            firewall {
+                name allow-all
+            }
+        }
+        from local {
+            firewall {
+                name local-WAN
+            }
+        }
+        interface eth0
+    }
+}
